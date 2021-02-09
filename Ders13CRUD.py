@@ -1,0 +1,25 @@
+from tkinter import *
+import sqlite3
+con=sqlite3.connect("derslerim.db")
+cursor=con.cursor()
+def tabloolustur():
+    cursor.execute("CREATE TABLE IF NOT EXISTS dersler(dersad TEXT,dersogretmeni TEXT,dersnotu")
+    con.commit()
+    con.close()
+def veriekle():
+    cursor.execute("INSERT INTO dersler VALUE('matematik','ayşe sel','80'")
+    con.commit()
+    con.close()
+tabloolustur()
+veriekle()
+root=Tk()
+root.title("sql tablo")
+root.geometry("500x500+1200+100")
+Label(root,text="Derslerim Tablosu", bg="ligthblue",font="verdana15",anchor=CENTER).grid(column=0,row=0,coumspan=3,sticky="EW")
+Label(root,textvariable="dersad",width=12,relief=RAISED).grid(column=0,row=1,padY=5)
+Label(root,textvariable="dersogretmeni",width=12,relief=RAISED).grid(column=1,row=1,padY=5)
+Label(root,textvariable="dersad",width=12,relief=RAISED).grid(column=2,row=1,padY=5)
+Button(root,"kaydet",bg="yellow").grid(column=3,row=3,columnspan=2)
+Button(root,"sil",bg="blue").grid(column=0,row=3,columnspan=2)
+root.mainloop()
+cursor.close()
